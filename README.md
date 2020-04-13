@@ -8,15 +8,16 @@ Expressive log management for your server.
 
 ### Production
 
-Build the project and create executable:
+Build the project, create executable and remove the development server:
 ```
-make && make build
+make
+make build
+make destroy
 ```
 
 Run the daemon:
 ```
-chmod +x ./dist/loghog-<your-platform>
-./dist/loghog
+./dist/loghog-<your-platform>
 ```
 
 ### Configurations
@@ -33,7 +34,7 @@ API_HOST=my.ip.address API_PORT=3000 ./dist/loghog
 
 ##### Setting the log extension types (delimited by commas):
 ```
-LOG_TYPES=.log,.txt ./dist/loghog
+LOG_EXTS=.log,.txt ./dist/loghog
 ```
 
 ### API
