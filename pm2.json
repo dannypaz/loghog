@@ -1,0 +1,18 @@
+{
+  "apps": [
+    {
+      "name": "loghog-server",
+      "min_uptime": "10000",
+      "max_restarts": "10",
+      "script": "./build",
+      "watch": [
+        "build"
+      ]
+    }, {
+      "name": "typescript-server",
+      "script": "npm",
+      "args": "run tsc-watch",
+      "interpreter": "none"
+    }
+  ]
+}

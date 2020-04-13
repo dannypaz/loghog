@@ -1,0 +1,51 @@
+{
+  "name": "loghog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run typecheck && npm run lint && npm run unit",
+    "dev": "npm run build && pm2-docker pm2.json",
+    "tsc-watch": "tsc --watch",
+    "clean-build": "rm -rf build/",
+    "build": "npm run clean-build && tsc",
+    "lint": "eslint src --ext .ts,.js --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "unit": "mocha -- -r ts-node/register test/**/*.test.ts",
+    "clean-dist": "rm -f ./dist/loghog*",
+    "dist": "npm run clean-dist && pkg -t win,linux,mac -c package.json --out-path ./dist build/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/body-parser": "1.19.0",
+    "@types/compression": "1.7.0",
+    "@types/express": "4.17.3",
+    "@types/morgan": "1.9.0",
+    "@types/node": "13.9.2",
+    "body-parser": "1.19.0",
+    "compression": "1.7.4",
+    "express": "5.0.0-alpha.7",
+    "fastify": "2.13.1",
+    "morgan": "1.10.0",
+    "typescript": "3.8.3"
+  },
+  "devDependencies": {
+    "@types/chai": "4.2.11",
+    "@types/mocha": "7.0.2",
+    "@typescript-eslint/eslint-plugin": "2.24.0",
+    "@typescript-eslint/parser": "2.24.0",
+    "chai": "4.2.0",
+    "eslint": "6.8.0",
+    "eslint-config-standard": "14.1.1",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.1",
+    "mocha": "7.1.1",
+    "pkg": "4.4.7",
+    "pm2": "4.2.3",
+    "ts-node": "8.8.2"
+  }
+}
