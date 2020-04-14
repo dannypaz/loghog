@@ -20,9 +20,12 @@ app.use(morgan(MORGAN_LOG_LEVEL))
 app.get('/files/:filename', async (req: Request, res: Response): Promise<Response | void> => {
   const {
     filename,
+  } = req.params
+
+  const {
     limit,
     filter
-  } = req.params
+  } = req.query
 
   const files = await listFiles(LOG_PATH)
 
@@ -35,7 +38,7 @@ app.get('/files/:filename', async (req: Request, res: Response): Promise<Respons
   }
 
   const options = {
-    limit: parseInt(limit, 10),
+    limit: limit ? parseInt(limit, 10) : undefined,
     filter
   }
 
